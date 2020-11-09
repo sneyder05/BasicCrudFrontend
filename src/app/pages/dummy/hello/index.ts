@@ -1,0 +1,1 @@
+export * from './dummy-hello.component';
