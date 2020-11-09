@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ErrorLayoutComponent } from '../layouts/error';
 import { ViewportLayoutComponent } from '../layouts/viewport';
-import { CharacterListComponent } from '../pages/character/list/character-list.component';
+import { CharacterListComponent } from '../pages/character/list';
 import { DummyHelloComponent } from '../pages/dummy/hello';
 import { Page404Component } from '../pages/error/error-404';
 
