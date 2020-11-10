@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-const x = [1,2];
 
 @Component({
     selector: 'app-root',

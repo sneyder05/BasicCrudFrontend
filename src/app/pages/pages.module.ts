@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { NgModule } from "@angular/core";
+import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { LayoutModule } from '../layout.module';
+import { DesignSystemModule } from '../design-system/design-system.module';
 import { CharacterListComponent } from './character/list';
 import { Page404Component } from './error/error-404';
 
@@ -9,7 +9,7 @@ import { Page404Component } from './error/error-404';
     imports: [
         CommonModule,
         FormsModule,
-        LayoutModule
+        DesignSystemModule
     ],
     declarations: [
         Page404Component,

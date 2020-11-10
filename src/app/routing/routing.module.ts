@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from "@angular/router";
+import { RouterModule, Routes } from '@angular/router';
 import { ErrorLayoutComponent } from '../layouts/error';
-import { CharacterListComponent } from '../layouts/pages/character/list';
-import { Page404Component } from '../layouts/pages/error/error-404';
 import { ViewportLayoutComponent } from '../layouts/viewport';
+import { CharacterListComponent } from '../pages/character/list';
+import { Page404Component } from '../pages/error/error-404';
 
 const ErrorRoutes: Routes = [
     { path: '404', component: Page404Component }
