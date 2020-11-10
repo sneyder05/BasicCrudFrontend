@@ -10,23 +10,26 @@ import { NZ_I18N } from 'ng-zorro-antd/i18n';
 import { en_US } from 'ng-zorro-antd/i18n';
 import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
-import { NzButtonModule } from 'ng-zorro-antd/button';
+import { LayoutModule } from './layouts/layout.module';
+import { PagesModule } from './layouts/pages/pages.module';
 
 registerLocaleData(en);
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    HttpClientModule,
-    BrowserAnimationsModule,
-    NzButtonModule
-  ],
-  providers: [{ provide: NZ_I18N, useValue: en_US }],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent
+    ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        FormsModule,
+        HttpClientModule,
+        BrowserAnimationsModule,
+        AppRoutingModule,
+        PagesModule,
+        LayoutModule
+    ],
+    providers: [{ provide: NZ_I18N, useValue: en_US }],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }
