@@ -26,9 +26,9 @@ export class CharacterDetailComponent implements OnInit {
 
         this.characterService.load(this.id).subscribe(response => {
             this.character = response;
-            this.isLoading = false;
         }, () => {
             this.didError = true;
+        }).add(() => {
             this.isLoading = false;
         });
     }
