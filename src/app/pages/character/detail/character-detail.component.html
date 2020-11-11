@@ -1,5 +1,16 @@
 <div>
     <page-title title="Character detail" subtitle="{{ character.name }}"></page-title>
+    <nz-breadcrumb nzSeparator=">">
+        <nz-breadcrumb-item>
+            Home
+        </nz-breadcrumb-item>
+        <nz-breadcrumb-item>
+            <a [routerLink]="['/app/characters']">Characters</a>
+        </nz-breadcrumb-item>
+        <nz-breadcrumb-item>
+            {{ character.name }}
+        </nz-breadcrumb-item>
+    </nz-breadcrumb>
     <nz-skeleton *ngIf="isLoading" [nzActive]="true"></nz-skeleton>
     <div *ngIf="!isLoading && !didError">
         <nz-descriptions nzTitle="All about <{{ character.name }}>" nzBordered class="p-8" [nzExtra]="actions">

@@ -1,6 +1,12 @@
 <div>
     <page-title title="Characters" subtitle="All of them"></page-title>
     <nz-alert *ngIf="errorMsg !== undefined" nzType="error" nzCloseable nzMessage="Error" nzDescription="{{ errorMsg }}"></nz-alert>
+    <div class="mv-16">
+        <button nz-button title="Create new character" [routerLink]="['save']" >
+            <i nz-icon nzType="user-add"></i>
+            Create
+        </button>
+    </div>
     <nz-table
         #charactersListTable
         nzShowPagination
@@ -38,8 +44,16 @@
                 <td>{{ character.colorHair }}</td>
                 <td>{{ character.originPlanet }}</td>
                 <td>
-                    <button nz-button nzType="primary" nzShape="circle" title="View detail" (click)="onClickViewDetail(character.id)" >
+                    <button nz-button nzType="primary" nzShape="circle" title="View detail" [routerLink]="['detail/', character.id]" >
                         <i nz-icon nzType="eye"></i>
+                    </button>
+                    &nbsp;
+                    <button nz-button nzShape="circle" title="Edit" [routerLink]="['save/', character.id]" >
+                        <i nz-icon nzType="edit"></i>
+                    </button>
+                    &nbsp;
+                    <button nz-button nzType="danger" nzShape="circle" title="Remove" >
+                        <i nz-icon nzType="delete"></i>
                     </button>
                 </td>
             </tr>

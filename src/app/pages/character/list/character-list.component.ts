@@ -59,8 +59,4 @@ export class CharacterListComponent implements OnInit {
         this.originPlaneFilter.searchText = '';
         this.load();
     }
-
-    public onClickViewDetail(id: string): void {
-        this.router.navigate([ '/app/characters', id ]);
-    }
 }

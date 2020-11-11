@@ -1,0 +1,56 @@
+<div>
+    <page-title title="Characters" subtitle="{{ id && character.id ? 'Edit: ' + (character.name) : 'Create' }}"></page-title>
+    <nz-breadcrumb nzSeparator=">">
+        <nz-breadcrumb-item>
+            Home
+        </nz-breadcrumb-item>
+        <nz-breadcrumb-item>
+            <a [routerLink]="['/app/characters']">Characters</a>
+        </nz-breadcrumb-item>
+        <nz-breadcrumb-item>
+            Save
+        </nz-breadcrumb-item>
+    </nz-breadcrumb>
+    <nz-alert *ngIf="!isLoading && didError" nzType="warning" nzCloseable nzMessage="Notice" nzDescription="Unable to find a character. It will be created!"></nz-alert>
+    <h3 nz-typography>Character information</h3>
+    <nz-skeleton *ngIf="isLoading" [nzActive]="true"></nz-skeleton>
+    <form *ngIf="!isLoading" nz-form class="p-8" [formGroup]="validateForm" (ngSubmit)="onSubmit()">
+        <nz-form-item>
+            <nz-form-label [nzLg]="2" nzRequired nzFor="id">ID</nz-form-label>
+            <nz-form-control [nzLg]="4">
+                <input nz-input formControlName="id" readonly id="id" />
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-label [nzLg]="2" nzRequired nzFor="name">Name</nz-form-label>
+            <nz-form-control [nzLg]="4" nzErrorTip="Please input the name!">
+                <input nz-input formControlName="name" id="name" />
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-label [nzLg]="2" nzRequired nzFor="weight">Weight</nz-form-label>
+            <nz-form-control [nzLg]="4" nzErrorTip="Please input the weight in format #.##!">
+                <input nz-input formControlName="weight" id="weight" />
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-label [nzLg]="2" nzRequired nzFor="colorHair">Color hair</nz-form-label>
+            <nz-form-control [nzLg]="4" nzErrorTip="Please input the color hair!">
+                <input nz-input formControlName="colorHair" id="colorHair" />
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-label [nzLg]="2" nzRequired nzFor="originPlanet">Origin planet</nz-form-label>
+            <nz-form-control [nzLg]="4" nzErrorTip="Please input the origin planet!">
+                <input nz-input formControlName="originPlanet" id="originPlanet" />
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item nz-row class="register-area">
+            <nz-form-control [nzLg]="{ span: 2, offset: 2 }">
+                <button nz-button nzBlock nzType="primary" [nzLoading]="isSaving">Save</button>
+            </nz-form-control>
+        </nz-form-item>
+    </form>
+    <nz-alert *ngIf="didErrorSaving" nzType="error" nzMessage="Error" nzDescription="Unable to save the character information"></nz-alert>
+    <nz-alert *ngIf="!isSaving && wasSavedOk" nzType="success" nzMessage="Success" nzDescription="The character information was saved successfully"></nz-alert>
+</div>

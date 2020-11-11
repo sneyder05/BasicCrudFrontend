@@ -4,6 +4,7 @@ import { ErrorLayoutComponent } from '../layouts/error';
 import { ViewportLayoutComponent } from '../layouts/viewport';
 import { CharacterDetailComponent } from '../pages/character/detail';
 import { CharacterListComponent } from '../pages/character/list';
+import { CharacterSaveComponent } from '../pages/character/save';
 import { Page404Component } from '../pages/error/error-404';
 
 const ErrorRoutes: Routes = [
@@ -12,14 +13,16 @@ const ErrorRoutes: Routes = [
 
 const ViewportRoutes: Routes = [
     { path: 'characters', component: CharacterListComponent },
-    { path: 'characters/:id', component: CharacterDetailComponent }
+    { path: 'characters/detail/:id', component: CharacterDetailComponent },
+    { path: 'characters/save/:id', component: CharacterSaveComponent },
+    { path: 'characters/save', component: CharacterSaveComponent }
 ];
 
 const AppRoutes: Routes = [
     { path: '', pathMatch: 'full', redirectTo: 'app/characters' },
     { path: 'error', component: ErrorLayoutComponent, children: ErrorRoutes },
-    { path: 'app', component: ViewportLayoutComponent, children: ViewportRoutes }
-    // { path: '**', pathMatch: 'full', redirectTo: 'error/404' }
+    { path: 'app', component: ViewportLayoutComponent, children: ViewportRoutes },
+    { path: '**', pathMatch: 'full', redirectTo: 'error/404' }
 ];
 
 @NgModule({
