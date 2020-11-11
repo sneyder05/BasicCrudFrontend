@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Character, IPaginationResult } from 'src/app/types';
+import { Character, IPaginationResult, SimpleRequestMsgResponse } from 'src/app/types';
 
 @Injectable({
     providedIn: 'root'
@@ -39,5 +39,11 @@ export class CharacterService {
         const url = `${this.BASE_URL}/v1/character/update`;
 
         return this.http.put<Character>(url, character);
+    }
+
+    public remove(id: string): Observable<SimpleRequestMsgResponse> {
+        const url = `${this.BASE_URL}/v1/character/delete/${id}`;
+
+        return this.http['delete']<SimpleRequestMsgResponse>(url);
     }
 }
