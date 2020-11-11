@@ -42,7 +42,7 @@ export class CharacterService {
     }
 
     public remove(id: string): Observable<SimpleRequestMsgResponse> {
-        const url = `${this.BASE_URL}/v1/character/delete/${id}`;
+        const url = `${this.BASE_URL}/v1/character/remove/${id}`;
 
         return this.http['delete']<SimpleRequestMsgResponse>(url);
     }
