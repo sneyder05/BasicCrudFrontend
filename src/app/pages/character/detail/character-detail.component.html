@@ -1,0 +1,18 @@
+<div>
+    <page-title title="Character detail" subtitle="{{ character.name }}"></page-title>
+    <nz-skeleton *ngIf="isLoading; else info" [nzActive]="true"></nz-skeleton>
+    <ng-template #info>
+        <nz-descriptions nzTitle="All about <{{ character.name }}>" nzBordered class="p-8" [nzExtra]="actions">
+            <nz-descriptions-item nzTitle="Name">{{ character.name }}</nz-descriptions-item>
+            <nz-descriptions-item nzTitle="Weight">{{ character.weight }}kg</nz-descriptions-item>
+            <nz-descriptions-item nzTitle="Color hair">{{ character.colorHair }}</nz-descriptions-item>
+            <nz-descriptions-item nzTitle="Origin planet">{{ character.originPlanet }}</nz-descriptions-item>
+        </nz-descriptions>
+        <ng-template #actions>
+            <button nz-button nzType="primary">
+                <i nz-icon nzType="edit"></i>
+                Edit
+            </button>
+        </ng-template>
+    </ng-template>
+</div>

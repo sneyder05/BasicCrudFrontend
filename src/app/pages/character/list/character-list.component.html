@@ -1,5 +1,70 @@
 <div>
-    Hello!
-    <br>
-    <button nz-button nzType="primary">Primary</button>
+    <page-title title="Characters" subtitle="All of them"></page-title>
+    <nz-alert *ngIf="errorMsg !== undefined" nzType="error" nzCloseable nzMessage="Error" nzDescription="{{ errorMsg }}"></nz-alert>
+    <nz-table
+        #charactersListTable
+        nzShowPagination
+        nzShowSizeChanger
+        nzFrontPagination="false"
+        [nzData]="characters"
+        [nzLoading]="isLoading"
+        [(nzPageSize)]="recordsByPage"
+        [(nzPageIndex)]="currentPage"
+        [nzTotal]="totalRecords"
+        (nzQueryParams)="onChangeQueryParams()">
+        <thead>
+            <tr>
+                <th>
+                    Name
+                    <nz-filter-trigger [(nzVisible)]="nameFilter.visible" [nzActive]="nameFilter.searchText.length > 0" [nzDropdownMenu]="nameFilterMenu">
+                        <i nz-icon nzType="search"></i>
+                    </nz-filter-trigger>
+                </th>
+                <th>Weight(Kg)</th>
+                <th>Color hair</th>
+                <th>
+                    Origin planet
+                    <nz-filter-trigger [(nzVisible)]="originPlaneFilter.visible" [nzActive]="originPlaneFilter.searchText.length > 0" [nzDropdownMenu]="originPlanetFilterMenu">
+                        <i nz-icon nzType="search"></i>
+                    </nz-filter-trigger>
+                </th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let character of charactersListTable.data">
+                <td>{{ character.name }}</td>
+                <td>{{ character.weight }}</td>
+                <td>{{ character.colorHair }}</td>
+                <td>{{ character.originPlanet }}</td>
+                <td>
+                    <button nz-button nzType="primary" nzShape="circle" title="View detail" (click)="onClickViewDetail(character.id)" >
+                        <i nz-icon nzType="eye"></i>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </nz-table>
+    <nz-dropdown-menu #nameFilterMenu="nzDropdownMenu">
+        <div class="ant-table-filter-dropdown">
+            <div class="search-box">
+                <input type="text" nz-input placeholder="Search name" [(ngModel)]="nameFilter.searchText" />
+                <button nz-button nzSize="small" nzType="primary" (click)="load()" class="search-button">
+                    Search
+                </button>
+                <button nz-button nzSize="small" (click)="onResetNameFilter()">Reset</button>
+            </div>
+        </div>
+    </nz-dropdown-menu>
+    <nz-dropdown-menu #originPlanetFilterMenu="nzDropdownMenu">
+        <div class="ant-table-filter-dropdown">
+            <div class="search-box">
+                <input type="text" nz-input placeholder="Search origin planet" [(ngModel)]="originPlaneFilter.searchText" />
+                <button nz-button nzSize="small" nzType="primary" (click)="load()" class="search-button">
+                    Search
+                </button>
+                <button nz-button nzSize="small" (click)="onResetOriginPlaneFilter()">Reset</button>
+            </div>
+        </div>
+    </nz-dropdown-menu>
 </div>
