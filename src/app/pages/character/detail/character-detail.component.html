@@ -1,7 +1,7 @@
 <div>
     <page-title title="Character detail" subtitle="{{ character.name }}"></page-title>
-    <nz-skeleton *ngIf="isLoading; else info" [nzActive]="true"></nz-skeleton>
-    <ng-template #info>
+    <nz-skeleton *ngIf="isLoading" [nzActive]="true"></nz-skeleton>
+    <div *ngIf="!isLoading && !didError">
         <nz-descriptions nzTitle="All about <{{ character.name }}>" nzBordered class="p-8" [nzExtra]="actions">
             <nz-descriptions-item nzTitle="Name">{{ character.name }}</nz-descriptions-item>
             <nz-descriptions-item nzTitle="Weight">{{ character.weight }}kg</nz-descriptions-item>
@@ -14,5 +14,6 @@
                 Edit
             </button>
         </ng-template>
-    </ng-template>
+    </div>
+    <nz-alert *ngIf="!isLoading && didError" nzType="error" nzCloseable nzMessage="Error" nzDescription="Unable to find a character"></nz-alert>
 </div>

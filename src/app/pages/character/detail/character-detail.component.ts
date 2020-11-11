@@ -11,6 +11,7 @@ export class CharacterDetailComponent implements OnInit {
     private id: string;
     public character: Character = {} as Character;
     public isLoading = true;
+    public didError = false;
 
     constructor(private characterService: CharacterService, private route: ActivatedRoute) {}
 
@@ -21,8 +22,13 @@ export class CharacterDetailComponent implements OnInit {
     }
 
     private load(): void {
+        this.isLoading = true;
+
         this.characterService.load(this.id).subscribe(response => {
             this.character = response;
+            this.isLoading = false;
+        }, () => {
+            this.didError = true;
             this.isLoading = false;
         });
     }
