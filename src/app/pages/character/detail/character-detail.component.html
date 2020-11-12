@@ -20,7 +20,7 @@
             <nz-descriptions-item nzTitle="Origin planet">{{ character.originPlanet }}</nz-descriptions-item>
         </nz-descriptions>
         <ng-template #actions>
-            <button nz-button nzType="primary">
+            <button nz-button nzType="primary" [routerLink]="['save/', character.id]">
                 <i nz-icon nzType="edit"></i>
                 Edit
             </button>

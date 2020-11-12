@@ -2,12 +2,13 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Character, IPaginationResult, SimpleRequestMsgResponse } from 'src/app/types';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
     providedIn: 'root'
 })
 export class CharacterService {
-    private readonly BASE_URL = 'http://localhost:3500/api';
+    private readonly BASE_URL = environment.app.path.baseServerUri;
 
     constructor(private http: HttpClient) {}
 
